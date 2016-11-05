@@ -58,6 +58,15 @@ class Solver(object):
     def solve(self, X, R, V, lambda_v_rt, lambda_u, lambda_v, dir_save, batch_size, xpu, sym, args, args_grad, auxs,
               data_iter, begin_iter, end_iter, args_lrmult={}, debug = False):
         # names and shapes
+
+        #uncomment this code to get a visualization of network architecture
+        # print "type of sym %s" %type(sym)
+        # print sym.infer_shape()
+        # name = "autoencoder"
+        # net = mx.viz.plot_network(sym,node_attrs={"shape":'rect',"fixedsize":'false'})
+        # net.render(name)
+        # exit(0)
+
         input_desc = data_iter.provide_data + data_iter.provide_label
         input_names = [k for k, shape in input_desc]
         # plances to store them
