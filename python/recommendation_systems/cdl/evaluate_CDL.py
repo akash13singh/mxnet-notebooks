@@ -5,13 +5,13 @@ import numpy as np
 
 
 def cal_rec(p, cut):
-    R_true = read_user('cf-test-1-users.dat')
+    R_true = read_user('data/cf-test-1-users.dat')
     dir_save = 'cdl' + str(p)
     U = np.mat(np.loadtxt(dir_save + '/final-U.dat'))
     V = np.mat(np.loadtxt(dir_save + '/final-V.dat'))
     R = U * V.T
 
-
+    print "recommendations shape"+str(R.shape)
     num_u = R.shape[0]
     num_hit = 0
     fp = open(dir_save + '/rec-list.dat', 'w')
@@ -33,11 +33,12 @@ def cal_rec(p, cut):
 if __name__ == '__main__':
 
     # give the same p as given in cdl.py
-    p = 4
-    cal_rec(p, 300)
+    p = 1
+    M_low = 50
+    M_high = 300
+    cal_rec(p, M_high)
     dir_save = 'cdl%d' % p
-
-    R_test = read_user('cf-test-1-users.dat')
+    R_test = read_user('data/cf-test-1-users.dat')
     fp = open(dir_save + '/rec-list.dat')
     lines = fp.readlines()
 
@@ -48,8 +49,7 @@ if __name__ == '__main__':
     num_users = len(range(R_test.shape[0]))
 
     # recall@M is calculated for M = 50 to 300
-    M_low = 50
-    M_high = 300
+
     recall_levels = M_high-M_low + 1
     recallArray = np.zeros(shape=(num_users,recall_levels))
 
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     print " correct %d" % (correct)
     print " users %d" %(users)
     print " Recall at M"
-
+    print "recall@300 " +str(np.nanmean(recallArray,axis=0))
     plt.plot(range(M_low,M_high+1),np.nanmean(recallArray,axis=0))
     plt.ylabel("Recall")
     plt.xlabel("M")

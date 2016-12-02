@@ -11,8 +11,8 @@ for i,row in enumerate(csvReader):
     if i==0:
         continue
     d_id_title[i-1] = row[3]
-R_test = read_user('cf-test-1-users.dat')
-R_train = read_user('cf-train-1-users.dat')
+R_test = read_user('data/cf-test-1-users.dat')
+R_train = read_user('data/cf-train-1-users.dat')
 fp = open(dir_save+'/rec-list.dat')
 lines = fp.readlines()
 

@@ -11,9 +11,9 @@ if __name__ == '__main__':
     lambda_u = .1 # lambda_u in CDL
     lambda_v = 10 # lambda_v in CDL
     K = 50  # no of latent vectors in the compact representation
-    p = 4 # used for data-folder name
+    p = 10 # used for data-folder name
     is_dummy = False # whether to use dummy data
-    num_iter = 34000
+    num_iter = 100
     batch_size = 256
 
     np.random.seed(1234) # set seed

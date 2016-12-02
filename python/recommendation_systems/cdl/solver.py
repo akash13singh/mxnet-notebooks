@@ -194,5 +194,5 @@ class Solver(object):
             data_iter, X.shape[0], xpu).values()[0]
         U, V, BCD_loss = BCD_one(R, U, V, theta, lambda_u, lambda_v,
             dir_save, True, 1)
-        fp.close()
+        #fp.close()
         return U, V, theta, BCD_loss

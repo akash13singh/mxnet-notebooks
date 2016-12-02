@@ -22,8 +22,8 @@ def get_dummy_mult():
     X[X<0.9] = 0
     return X
 
-def read_user(f_in='cf-train-1-users.dat',num_u=5551,num_v=16980):
-    if not os.path.exists('cf-train-1-users.dat'):
+def read_user(f_in='data/cf-train-1-users.dat',num_u=5551,num_v=16980):
+    if not os.path.exists('data/cf-train-1-users.dat'):
         downloadData()
     fp = open(f_in)
     R = np.mat(np.zeros((num_u,num_v)))

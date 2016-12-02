@@ -1,7 +1,7 @@
 import numpy as np
 from data import read_user
 def cal_rec(p,cut):
-    R_true = read_user('cf-test-1-users.dat')
+    R_true = read_user('data/cf-test-1-users.dat')
     dir_save = 'cdl'+str(p)
     U = np.mat(np.loadtxt(dir_save+'/final-U.dat'))
     V = np.mat(np.loadtxt(dir_save+'/final-V.dat'))
